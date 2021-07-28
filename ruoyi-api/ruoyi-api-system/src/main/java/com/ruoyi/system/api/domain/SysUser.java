@@ -5,6 +5,7 @@ import java.util.List;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -12,7 +13,6 @@ import com.ruoyi.common.core.annotation.Excel;
 import com.ruoyi.common.core.annotation.Excel.ColumnType;
 import com.ruoyi.common.core.annotation.Excel.Type;
 import com.ruoyi.common.core.annotation.Excels;
-import com.ruoyi.common.core.utils.StringUtils;
 import com.ruoyi.common.core.web.domain.BaseEntity;
 
 /**
@@ -57,9 +57,6 @@ public class SysUser extends BaseEntity
 
     /** 密码 */
     private String password;
-
-    /** 盐加密 */
-    private String salt;
 
     /** 帐号状态（0正常 1停用） */
     @Excel(name = "帐号状态", readConverterExp = "0=正常,1=停用")
@@ -193,10 +190,6 @@ public class SysUser extends BaseEntity
 
     public String getAvatar()
     {
-        if (StringUtils.isEmpty(avatar))
-        {
-            return StringUtils.EMPTY;
-        }
         return avatar;
     }
 
@@ -205,6 +198,7 @@ public class SysUser extends BaseEntity
         this.avatar = avatar;
     }
 
+    @JsonIgnore
     @JsonProperty
     public String getPassword()
     {
@@ -214,16 +208,6 @@ public class SysUser extends BaseEntity
     public void setPassword(String password)
     {
         this.password = password;
-    }
-
-    public String getSalt()
-    {
-        return salt;
-    }
-
-    public void setSalt(String salt)
-    {
-        this.salt = salt;
     }
 
     public String getStatus()
@@ -315,7 +299,6 @@ public class SysUser extends BaseEntity
     {
         this.roleId = roleId;
     }
-
     @Override
     public String toString() {
         return new ToStringBuilder(this,ToStringStyle.MULTI_LINE_STYLE)
@@ -328,7 +311,6 @@ public class SysUser extends BaseEntity
             .append("sex", getSex())
             .append("avatar", getAvatar())
             .append("password", getPassword())
-            .append("salt", getSalt())
             .append("status", getStatus())
             .append("delFlag", getDelFlag())
             .append("loginIp", getLoginIp())
