@@ -1,4 +1,4 @@
-package com.ruoyi.common.core.exception;
+package com.ruoyi.common.core.exception.base;
 
 /**
  * 基础异常
