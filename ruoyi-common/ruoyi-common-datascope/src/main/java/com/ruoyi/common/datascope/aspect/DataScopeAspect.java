@@ -3,12 +3,11 @@ package com.ruoyi.common.datascope.aspect;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import com.ruoyi.common.core.utils.StringUtils;
 import com.ruoyi.common.core.web.domain.BaseEntity;
 import com.ruoyi.common.datascope.annotation.DataScope;
-import com.ruoyi.common.security.service.TokenService;
+import com.ruoyi.common.security.utils.SecurityUtils;
 import com.ruoyi.system.api.domain.SysRole;
 import com.ruoyi.system.api.domain.SysUser;
 import com.ruoyi.system.api.model.LoginUser;
@@ -52,9 +51,6 @@ public class DataScopeAspect
      */
     public static final String DATA_SCOPE = "dataScope";
 
-    @Autowired
-    private TokenService tokenService;
-
     @Before("@annotation(controllerDataScope)")
     public void doBefore(JoinPoint point, DataScope controllerDataScope) throws Throwable
     {
@@ -65,7 +61,7 @@ public class DataScopeAspect
     protected void handleDataScope(final JoinPoint joinPoint, DataScope controllerDataScope)
     {
         // 获取当前的用户
-        LoginUser loginUser = tokenService.getLoginUser();
+        LoginUser loginUser = SecurityUtils.getLoginUser();
         if (StringUtils.isNotNull(loginUser))
         {
             SysUser currentUser = loginUser.getSysUser();
@@ -111,7 +107,7 @@ public class DataScopeAspect
             else if (DATA_SCOPE_DEPT_AND_CHILD.equals(dataScope))
             {
                 sqlString.append(StringUtils.format(
-                        " OR {}.dept_id IN ( SELECT dept_id FROM sys_dept WHERE dept_id = {} or find_in_set({}, ancestors) > 0 )",
+                        " OR {}.dept_id IN ( SELECT dept_id FROM sys_dept WHERE dept_id = {} or find_in_set( {} , ancestors ) )",
                         deptAlias, user.getDeptId(), user.getDeptId()));
             }
             else if (DATA_SCOPE_SELF.equals(dataScope))
