@@ -41,7 +41,7 @@
         <oracle.version>12.2.0.1</oracle.version>
         <commons-collections.version>3.2.2</commons-collections.version>
         <transmittable-thread-local.version>2.12.2</transmittable-thread-local.version>
-        <log4j2.version>2.16.0</log4j2.version>
+        <log4j2.version>2.17.0</log4j2.version>
     </properties>
 
     <!-- 依赖声明 -->
