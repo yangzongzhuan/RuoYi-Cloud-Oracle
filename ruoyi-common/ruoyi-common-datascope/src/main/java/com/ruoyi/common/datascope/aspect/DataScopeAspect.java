@@ -1,5 +1,7 @@
 package com.ruoyi.common.datascope.aspect;
 
+import java.util.ArrayList;
+import java.util.List;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
@@ -85,10 +87,15 @@ public class DataScopeAspect
     public static void dataScopeFilter(JoinPoint joinPoint, SysUser user, String deptAlias, String userAlias)
     {
         StringBuilder sqlString = new StringBuilder();
+        List<String> conditions = new ArrayList<String>();
 
         for (SysRole role : user.getRoles())
         {
             String dataScope = role.getDataScope();
+            if (conditions.contains(dataScope))
+            {
+                continue;
+            }
             if (DATA_SCOPE_ALL.equals(dataScope))
             {
                 sqlString = new StringBuilder();
@@ -107,7 +114,7 @@ public class DataScopeAspect
             else if (DATA_SCOPE_DEPT_AND_CHILD.equals(dataScope))
             {
                 sqlString.append(StringUtils.format(
-                        " OR {}.dept_id IN ( SELECT dept_id FROM sys_dept WHERE dept_id = {} or find_in_set( {} , ancestors ) )",
+                        " OR {}.dept_id IN ( SELECT dept_id FROM sys_dept WHERE dept_id = {} or find_in_set({}, ancestors) > 0 )",
                         deptAlias, user.getDeptId(), user.getDeptId()));
             }
             else if (DATA_SCOPE_SELF.equals(dataScope))
@@ -122,6 +129,7 @@ public class DataScopeAspect
                     sqlString.append(StringUtils.format(" OR {}.dept_id = 0 ", deptAlias));
                 }
             }
+            conditions.add(dataScope);
         }
 
         if (StringUtils.isNotBlank(sqlString.toString()))
