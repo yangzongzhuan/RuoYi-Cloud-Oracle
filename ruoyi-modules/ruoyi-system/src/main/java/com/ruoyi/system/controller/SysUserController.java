@@ -150,6 +150,16 @@ public class SysUserController extends BaseController
     }
 
     /**
+     *记录用户登录IP地址和登录时间
+     */
+    @InnerAuth
+    @PutMapping("/recordlogin")
+    public R<Boolean> recordlogin(@RequestBody SysUser sysUser)
+    {
+        return R.ok(userService.updateUserProfile(sysUser));
+    }
+
+    /**
      * 获取用户信息
      * 
      * @return 用户信息
