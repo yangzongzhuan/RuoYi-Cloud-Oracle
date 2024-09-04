@@ -59,7 +59,7 @@ public class AuthFilter implements GlobalFilter, Ordered
         Claims claims = JwtUtils.parseToken(token);
         if (claims == null)
         {
-            return unauthorizedResponse(exchange, "token已过期或验证不正确！");
+            return unauthorizedResponse(exchange, "令牌已过期或验证不正确！");
         }
         String userkey = JwtUtils.getUserKey(claims);
         boolean islogin = redisService.hasKey(getTokenKey(userkey));
@@ -101,7 +101,7 @@ public class AuthFilter implements GlobalFilter, Ordered
 
     private Mono<Void> unauthorizedResponse(ServerWebExchange exchange, String msg)
     {
-        log.error("[鉴权异常处理]请求路径:{}", exchange.getRequest().getPath());
+        log.error("[鉴权异常处理]请求路径:{},错误信息:{}", exchange.getRequest().getPath(), msg);
         return ServletUtils.webFluxResponseWriter(exchange.getResponse(), msg, HttpStatus.UNAUTHORIZED);
     }
 
