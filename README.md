@@ -14,14 +14,14 @@
 若依是一套全部开源的快速开发平台，毫无保留给个人及企业免费使用。
 
 * 本仓库为RuoYi-Cloud的Oracle版本，保持同步更新。
-* 配套前端代码地址[RuoYi-Cloud-UI](https://gitee.com/y_project/RuoYi-Cloud/tree/master/ruoyi-ui)。
+* 配套前端Vue2版本代码地址[RuoYi-Cloud-Vue2](https://gitee.com/y_project/RuoYi-Cloud/tree/master/ruoyi-ui)。
+* 配套前端Vue3版本代码地址[RuoYi-Cloud-Vue3](https://gitcode.com/yangzongzhuan/RuoYi-Cloud-Vue3)。
 * 采用前后端分离的模式，微服务版本前端(基于 [RuoYi-Vue](https://gitee.com/y_project/RuoYi-Vue))。
 * 后端采用Spring Boot、Spring Cloud & Alibaba。
 * 注册中心、配置中心选型Nacos，权限认证使用Redis。
 * 流量控制框架选型Sentinel，分布式事务选型Seata。
 * 如需不分离应用，请移步 [RuoYi](https://gitee.com/y_project/RuoYi)，如需分离应用，请移步 [RuoYi-Vue](https://gitee.com/y_project/RuoYi-Vue)
-* 阿里云折扣场：[点我进入](http://aly.ruoyi.vip)，腾讯云秒杀场：[点我进入](http://txy.ruoyi.vip)&nbsp;&nbsp;
-* 阿里云优惠券：[点我领取](https://www.aliyun.com/minisite/goods?userCode=brki8iof&share_source=copy_link)，腾讯云优惠券：[点我领取](https://cloud.tencent.com/redirect.php?redirect=1025&cps_key=198c8df2ed259157187173bc7f4f32fd&from=console)&nbsp;&nbsp;
+* 阿里云优惠券：[点我进入](http://aly.ruoyi.vip)，腾讯云优惠券：[点我进入](http://txy.ruoyi.vip)&nbsp;&nbsp;
 
 ## 系统模块
 
