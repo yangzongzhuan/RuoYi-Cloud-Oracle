@@ -52,13 +52,13 @@
                 </exclusion>
             </exclusions>
         </dependency>
-        
+
         <!--oracle驱动-->
         <dependency>
             <groupId>com.oracle</groupId>
             <artifactId>ojdbc8</artifactId>
         </dependency>
-        
+
         <!-- RuoYi Common Log -->
         <dependency>
             <groupId>com.ruoyi</groupId>

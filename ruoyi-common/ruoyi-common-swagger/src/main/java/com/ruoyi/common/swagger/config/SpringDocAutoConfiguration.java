@@ -2,6 +2,8 @@ package com.ruoyi.common.swagger.config;
 
 import java.util.ArrayList;
 import java.util.List;
+import org.springdoc.core.configuration.SpringDocConfiguration;
+import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -19,6 +21,7 @@ import io.swagger.v3.oas.models.servers.Server;
  *
  * @author ruoyi
  */
+@AutoConfiguration(before = SpringDocConfiguration.class)
 @EnableConfigurationProperties(SpringDocProperties.class)
 @ConditionalOnProperty(name = "springdoc.api-docs.enabled", havingValue = "true", matchIfMissing = true)
 public class SpringDocAutoConfiguration

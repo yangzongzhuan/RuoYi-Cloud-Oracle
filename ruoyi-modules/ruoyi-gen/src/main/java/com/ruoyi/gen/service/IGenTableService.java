@@ -70,8 +70,9 @@ public interface IGenTableService
      * 导入表结构
      * 
      * @param tableList 导入表列表
+     * @param operName 操作人员
      */
-    public void importGenTable(List<GenTable> tableList);
+    public void importGenTable(List<GenTable> tableList, String operName);
 
     /**
      * 预览代码
