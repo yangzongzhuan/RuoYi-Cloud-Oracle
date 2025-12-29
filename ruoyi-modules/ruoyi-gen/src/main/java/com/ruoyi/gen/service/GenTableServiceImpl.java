@@ -28,7 +28,6 @@ import com.ruoyi.common.core.constant.GenConstants;
 import com.ruoyi.common.core.exception.ServiceException;
 import com.ruoyi.common.core.text.CharsetKit;
 import com.ruoyi.common.core.utils.StringUtils;
-import com.ruoyi.common.security.utils.SecurityUtils;
 import com.ruoyi.gen.domain.GenTable;
 import com.ruoyi.gen.domain.GenTableColumn;
 import com.ruoyi.gen.mapper.GenTableColumnMapper;
@@ -121,7 +120,7 @@ public class GenTableServiceImpl implements IGenTableService
      * @return 结果
      */
     @Override
-    @Transactional(rollbackFor = Exception.class)
+    @Transactional
     public void updateGenTable(GenTable genTable)
     {
         String options = JSON.toJSONString(genTable.getParams());
@@ -143,7 +142,7 @@ public class GenTableServiceImpl implements IGenTableService
      * @return 结果
      */
     @Override
-    @Transactional(rollbackFor = Exception.class)
+    @Transactional
     public void deleteGenTableByIds(Long[] tableIds)
     {
         genTableMapper.deleteGenTableByIds(tableIds);
@@ -156,10 +155,9 @@ public class GenTableServiceImpl implements IGenTableService
      * @param tableList 导入表列表
      */
     @Override
-    @Transactional(rollbackFor = Exception.class)
-    public void importGenTable(List<GenTable> tableList)
+    @Transactional
+    public void importGenTable(List<GenTable> tableList, String operName)
     {
-        String operName = SecurityUtils.getUsername();
         try
         {
             for (GenTable table : tableList)
@@ -244,6 +242,9 @@ public class GenTableServiceImpl implements IGenTableService
     {
         // 查询表信息
         GenTable table = genTableMapper.selectGenTableByName(tableName);
+        // 获取菜单id序列，用于生成菜单sql语句
+        long menuId = genTableMapper.selectMenuId();
+        table.setMenuId(menuId);
         // 设置主子表信息
         setSubTable(table);
         // 设置主键列信息
@@ -282,7 +283,7 @@ public class GenTableServiceImpl implements IGenTableService
      * @param tableName 表名称
      */
     @Override
-    @Transactional(rollbackFor = Exception.class)
+    @Transactional
     public void synchDb(String tableName)
     {
         GenTable table = genTableMapper.selectGenTableByName(tableName);
@@ -357,6 +358,9 @@ public class GenTableServiceImpl implements IGenTableService
     {
         // 查询表信息
         GenTable table = genTableMapper.selectGenTableByName(tableName);
+        // 获取菜单id序列，用于生成菜单sql语句
+        long menuId = genTableMapper.selectMenuId();
+        table.setMenuId(menuId);
         // 设置主子表信息
         setSubTable(table);
         // 设置主键列信息
