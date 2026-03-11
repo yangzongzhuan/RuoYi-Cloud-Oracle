@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
@@ -29,6 +28,7 @@ import com.ruoyi.gen.domain.GenTable;
 import com.ruoyi.gen.domain.GenTableColumn;
 import com.ruoyi.gen.service.IGenTableColumnService;
 import com.ruoyi.gen.service.IGenTableService;
+import jakarta.servlet.http.HttpServletResponse;
 
 /**
  * 代码生成 操作处理

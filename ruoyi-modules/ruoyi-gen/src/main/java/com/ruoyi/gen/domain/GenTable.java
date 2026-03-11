@@ -1,8 +1,8 @@
 package com.ruoyi.gen.domain;
 
 import java.util.List;
-import javax.validation.Valid;
-import javax.validation.constraints.NotBlank;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotBlank;
 import org.apache.commons.lang3.ArrayUtils;
 import com.ruoyi.common.core.constant.GenConstants;
 import com.ruoyi.common.core.utils.StringUtils;
@@ -270,7 +270,6 @@ public class GenTable extends BaseEntity
     {
         this.subTable = subTable;
     }
-
     public List<GenTableColumn> getColumns()
     {
         return columns;
@@ -350,7 +349,6 @@ public class GenTable extends BaseEntity
     {
         return tplCategory != null && StringUtils.equals(GenConstants.TPL_SUB, tplCategory);
     }
-
     public boolean isTree()
     {
         return isTree(this.tplCategory);

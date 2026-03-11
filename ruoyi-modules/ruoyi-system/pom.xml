@@ -40,7 +40,7 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
-		
+
         <!--oracle驱动-->
         <dependency>
             <groupId>com.oracle</groupId>
