@@ -13,8 +13,8 @@
 
 若依是一套全部开源的快速开发平台，毫无保留给个人及企业免费使用。
 
-* 本仓库为RuoYi-Cloud-Oracle的Spring Boot 3 的版本，保持同步更新。
-* 后端采用Spring Boot3、Spring Cloud & Alibaba。
+* 本仓库为RuoYi-Cloud的Oracle版本，保持同步更新。
+* 后端采用Spring Boot、Spring Cloud & Alibaba。
 * 注册中心、配置中心选型Nacos，权限认证使用Redis。
 * 流量控制框架选型Sentinel，分布式事务选型Seata。
 * 如需不分离应用，请移步 [RuoYi](https://gitee.com/y_project/RuoYi)，如需分离应用，请移步 [RuoYi-Vue](https://gitee.com/y_project/RuoYi-Vue)
