@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import jakarta.servlet.http.HttpServletResponse;
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import com.ruoyi.common.core.text.Convert;
 import com.ruoyi.common.core.web.controller.BaseController;
@@ -22,13 +24,11 @@ import com.ruoyi.common.core.web.page.TableDataInfo;
 import com.ruoyi.common.log.annotation.Log;
 import com.ruoyi.common.log.enums.BusinessType;
 import com.ruoyi.common.security.annotation.RequiresPermissions;
-import com.ruoyi.common.security.utils.SecurityUtils;
 import com.ruoyi.gen.config.GenConfig;
 import com.ruoyi.gen.domain.GenTable;
 import com.ruoyi.gen.domain.GenTableColumn;
 import com.ruoyi.gen.service.IGenTableColumnService;
 import com.ruoyi.gen.service.IGenTableService;
-import jakarta.servlet.http.HttpServletResponse;
 
 /**
  * 代码生成 操作处理
@@ -105,12 +105,12 @@ public class GenController extends BaseController
     @RequiresPermissions("tool:gen:import")
     @Log(title = "代码生成", businessType = BusinessType.IMPORT)
     @PostMapping("/importTable")
-    public AjaxResult importTableSave(String tables)
+    public AjaxResult importTableSave(@RequestParam("tables") String tables, @RequestParam("tplWebType") String tplWebType)
     {
         String[] tableNames = Convert.toStrArray(tables);
         // 查询表信息
         List<GenTable> tableList = genTableService.selectDbTableListByNames(tableNames);
-        genTableService.importGenTable(tableList, SecurityUtils.getUsername());
+        genTableService.importGenTable(tableList, tplWebType);
         return success();
     }
 
