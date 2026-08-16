@@ -32,16 +32,16 @@ RuoYi-Cloud 后端项目提供 Spring Boot 2.x / 3.x / 4.x 多版本Oracle分支
 
 RuoYi-Cloud 前端项目提供 Vue 2.x / 3.x / JavaScript TypeScript 版本均可混用搭配
 
-| 项目名称      | **RuoYi-Vue** | **RuoYi-Vue3** | **RuoYi-Vue3-TypeScript**   |
-| :---          | :---          | :---           | :---                        |
-| **前端框架**  | Vue 2        | Vue 3          | Vue 3                       |
-| **脚本语言**  | JavaScript   | JavaScript     | TypeScript                  |
-| **构建工具**  | Vue CLI      | Vite           | Vite                        |
-| **UI 组件库** | Element UI   | Element Plus   | Element Plus                |
-| **状态管理**  | Vuex         | Pinia          | Pinia                       |
-| **路由管理**  | Vue Router 3 | Vue Router 4   | Vue Router 4                |
+| 项目名称      | **RuoYi-Cloud-Vue2** | **RuoYi-Cloud-Vue3** | **RuoYi-Cloud-Vue3-TypeScript**   |
+| :---          | :---                 | :---                 | :---                              |
+| **前端框架**  | Vue 2               | Vue 3                | Vue 3                             |
+| **脚本语言**  | JavaScript          | JavaScript           | TypeScript                        |
+| **构建工具**  | Vue CLI             | Vite                 | Vite                              |
+| **UI 组件库** | Element UI          | Element Plus         | Element Plus                      |
+| **状态管理**  | Vuex                | Pinia                | Pinia                             |
+| **路由管理**  | Vue Router 3        | Vue Router 4         | Vue Router 4                      |
 | **核心特点**  | 1. 技术栈经典稳定<br>2. 社区资料丰富<br>3. 当前维护重心已转移 | 1. 现代前端技术栈<br>2. 开发体验与性能更优<br>3. 官方主推的活跃版本 | 1. 类型加持，减少沟通成本<br>2. 开发时有提示，效率更高<br>3. 多人协作企业级开发项目 |
-| **仓库地址**  | [RuoYi-Vue](https://gitee.com/y_project/RuoYi-Vue) | [RuoYi-Vue3](https://gitcode.com/yangzongzhuan/RuoYi-Vue3) | [RuoYi-Vue3-TypeScript](https://gitcode.com/yangzongzhuan/RuoYi-Vue3/tree/typescript) |
+| **仓库地址**  | [RuoYi-Cloud-Vue2](https://gitcode.com/yangzongzhuan/RuoYi-Cloud-Vue2) | [RuoYi-Cloud-Vue3](https://gitcode.com/yangzongzhuan/RuoYi-Cloud-Vue3) | [RuoYi-Cloud-Vue3-TypeScript](https://gitcode.com/yangzongzhuan/RuoYi-Cloud-Vue3/tree/typescript) |
 
 ## 系统模块
 
