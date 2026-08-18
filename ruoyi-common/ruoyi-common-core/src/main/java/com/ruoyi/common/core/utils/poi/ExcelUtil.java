@@ -487,7 +487,7 @@ public class ExcelUtil<T>
 
     /**
      * 对list数据源将其里面的数据导入到excel表单
-     *
+     * 
      * @param response 返回数据
      * @param list 导出数据集合
      * @param sheetName 工作表的名称
@@ -591,7 +591,7 @@ public class ExcelUtil<T>
 
     /**
      * 对list数据源将其里面的数据导入到excel表单
-     *
+     * 
      * @param sheetName 工作表的名称
      * @param title 标题
      * @return 结果
@@ -840,13 +840,13 @@ public class ExcelUtil<T>
                 style.cloneStyleFrom(styles.get("data"));
                 style.setAlignment(HorizontalAlignment.CENTER);
                 style.setVerticalAlignment(VerticalAlignment.CENTER);
-                style.setFillForegroundColor(excel.headerBackgroundColor().index);
+                style.setFillForegroundColor(excel.headerBackgroundColor().getIndex());
                 style.setFillPattern(FillPatternType.SOLID_FOREGROUND);
                 Font headerFont = wb.createFont();
                 headerFont.setFontName("Arial");
                 headerFont.setFontHeightInPoints((short) 10);
                 headerFont.setBold(true);
-                headerFont.setColor(excel.headerColor().index);
+                headerFont.setColor(excel.headerColor().getIndex());
                 style.setFont(headerFont);
                 // 设置表格头单元格文本形式
                 DataFormat dataFormat = wb.createDataFormat();
@@ -918,7 +918,7 @@ public class ExcelUtil<T>
             Font dataFont = wb.createFont();
             dataFont.setFontName("Arial");
             dataFont.setFontHeightInPoints((short) 10);
-            dataFont.setColor(excel.color().index);
+            dataFont.setColor(excel.color().getIndex());
             style.setFont(dataFont);
             if (ColumnType.TEXT == excel.cellType())
             {
@@ -985,12 +985,15 @@ public class ExcelUtil<T>
         else if (ColumnType.IMAGE == attr.cellType())
         {
             ClientAnchor anchor = new XSSFClientAnchor(0, 0, 0, 0, (short) cell.getColumnIndex(), cell.getRow().getRowNum(), (short) (cell.getColumnIndex() + 1), cell.getRow().getRowNum() + 1);
-            String imagePath = Convert.toStr(value);
-            if (StringUtils.isNotEmpty(imagePath))
+            String propertyValue = Convert.toStr(value);
+            if (StringUtils.isNotEmpty(propertyValue))
             {
-                byte[] data = ImageUtils.getImage(imagePath);
-                getDrawingPatriarch(cell.getSheet()).createPicture(anchor,
-                        cell.getSheet().getWorkbook().addPicture(data, getImageType(data)));
+                List<String> imagePaths = StringUtils.str2List(propertyValue, SEPARATOR);
+                for (String imagePath : imagePaths)
+                {
+                    byte[] data = ImageUtils.getImage(imagePath);
+                    getDrawingPatriarch(cell.getSheet()).createPicture(anchor, cell.getSheet().getWorkbook().addPicture(data, getImageType(data)));
+                }
             }
         }
     }
@@ -1420,7 +1423,7 @@ public class ExcelUtil<T>
 
     /**
      * 以类的属性的get方法方法形式获取值
-     *
+     * 
      * @param o
      * @param name
      * @return value
